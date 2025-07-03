@@ -1,0 +1,455 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 font-sans;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  main {
+    padding-top: 80px;
+  }
+
+  /* Better focus styles for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-blue-500 ring-offset-2;
+  }
+
+  /* Screen reader only text */
+  .sr-only {
+    @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+  }
+}
+
+@layer components {
+  /* Improved button styles */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-success {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Icon button styles */
+  .btn-icon {
+    @apply inline-flex items-center justify-center p-2 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors;
+  }
+
+  .btn-icon-primary {
+    @apply btn-icon text-blue-600 hover:bg-blue-50;
+  }
+
+  .btn-icon-secondary {
+    @apply btn-icon text-gray-600 hover:bg-gray-50;
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 p-6;
+  }
+
+  .card-hover {
+    @apply card hover:shadow-md transition-shadow duration-200;
+  }
+
+  /* Form styles */
+  .input-field {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors;
+  }
+
+  .input-field.error {
+    @apply border-red-500 focus:border-red-500 focus:ring-red-500;
+  }
+
+  .select-field {
+    @apply input-field;
+  }
+
+  .textarea-field {
+    @apply input-field resize-none min-h-[6rem] max-h-48 overflow-y-auto;
+  }
+
+  /* Custom scrollbar for dropdowns and textareas */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+
+  .scrollbar-thumb-gray-300 {
+    scrollbar-color: #d1d5db transparent;
+  }
+
+  .scrollbar-track-gray-100 {
+    scrollbar-color: transparent #f3f4f6;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: #f3f4f6;
+    border-radius: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+
+  /* Badge styles */
+  .badge {
+    @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium;
+  }
+
+  .badge-primary {
+    @apply badge bg-blue-100 text-blue-800;
+  }
+
+  .badge-secondary {
+    @apply badge bg-gray-100 text-gray-800;
+  }
+
+  .badge-success {
+    @apply badge bg-green-100 text-green-800;
+  }
+
+  .badge-warning {
+    @apply badge bg-yellow-100 text-yellow-800;
+  }
+
+  .badge-error {
+    @apply badge bg-red-100 text-red-800;
+  }
+
+  /* Navbar styles */
+  .navbar {
+    @apply fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm;
+  }
+
+  .navbar-scrolled {
+    @apply shadow-md;
+  }
+
+  .navbar-default {
+    @apply shadow-sm;
+  }
+
+  /* Form section styles */
+  .form-section {
+    @apply card mb-6;
+  }
+
+  .form-section-title {
+    @apply text-lg font-semibold mb-4 text-gray-900;
+  }
+
+  .form-section-title {
+    @apply flex items-center gap-3 text-xl font-bold mb-6 text-blue-900;
+  }
+
+  .form-section-icon {
+    @apply w-12 h-12 rounded-xl shadow-lg flex items-center justify-center;
+  }
+
+  .form-grid {
+    @apply grid md:grid-cols-2 gap-4;
+  }
+
+  /* Layout utilities */
+  .container-responsive {
+    @apply max-w-6xl mx-auto px-4;
+  }
+
+  .page-padding {
+    @apply py-8;
+  }
+
+  /* Loading states */
+  .loading-spinner {
+    @apply animate-spin rounded-full border-b-2 border-blue-600;
+  }
+
+  .loading-container {
+    @apply min-h-screen bg-gray-50 flex items-center justify-center;
+  }
+
+  /* Mobile navigation */
+  .mobile-nav {
+    @apply md:hidden;
+  }
+
+  .mobile-nav-open {
+    @apply block;
+  }
+
+  .mobile-nav-closed {
+    @apply hidden;
+  }
+
+  /* Info display */
+  .info-label {
+    @apply text-sm font-medium text-gray-700;
+  }
+
+  .info-value {
+    @apply text-sm text-gray-900;
+  }
+
+  /* Spacing utilities */
+  .section-spacing {
+    @apply mb-8;
+  }
+
+  .content-spacing {
+    @apply space-y-4;
+  }
+
+  /* Responsive text */
+  .responsive-text {
+    @apply text-sm md:text-base;
+  }
+
+  .responsive-heading {
+    @apply text-xl md:text-2xl lg:text-3xl;
+  }
+
+  /* Safe area utilities */
+  .safe-top {
+    @apply pt-4;
+  }
+
+  .safe-bottom {
+    @apply pb-4;
+  }
+
+  /* Screen reader controls */
+  .screen-reader-controls {
+    @apply fixed bottom-4 right-4 z-50 bg-white rounded-lg shadow-lg border border-gray-200 p-4;
+  }
+
+  .screen-reader-button {
+    @apply btn-icon-primary mx-1;
+  }
+
+  .screen-reader-select {
+    @apply input-field text-sm;
+  }
+
+  /* Accessibility improvements */
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-50;
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .btn-primary {
+      @apply border-2 border-blue-600;
+    }
+    
+    .btn-secondary {
+      @apply border-2 border-gray-600;
+    }
+    
+    .input-field {
+      @apply border-2;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Dropdown positioning and z-index */
+  .dropdown-container {
+    @apply relative;
+  }
+
+  .dropdown-menu {
+    @apply fixed z-[9999] bg-white border border-gray-200 rounded-md shadow-lg;
+  }
+
+  /* Ensure dropdowns are above all other elements */
+  .dropdown-menu {
+    z-index: 9999 !important;
+  }
+
+  /* DatePicker styling to match blue theme */
+  .react-datepicker-wrapper {
+    @apply w-full;
+  }
+
+  .react-datepicker__input-container input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors bg-white text-gray-900;
+  }
+
+  .react-datepicker__input-container input:focus {
+    @apply border-blue-500 ring-1 ring-blue-500;
+  }
+
+  .react-datepicker__input-container input.error {
+    @apply border-red-500 focus:border-red-500 focus:ring-red-500;
+  }
+
+  .react-datepicker {
+    @apply border border-gray-200 rounded-md shadow-lg bg-white;
+  }
+
+  .react-datepicker__header {
+    @apply bg-blue-600 text-white border-b border-blue-700;
+  }
+
+  .react-datepicker__current-month {
+    @apply text-white font-semibold;
+  }
+
+  .react-datepicker__day-name {
+    @apply text-blue-100;
+  }
+
+  .react-datepicker__day {
+    @apply text-gray-900 hover:bg-blue-100 transition-colors;
+  }
+
+  .react-datepicker__day--selected {
+    @apply bg-blue-600 text-white hover:bg-blue-700;
+  }
+
+  .react-datepicker__day--keyboard-selected {
+    @apply bg-blue-100 text-blue-900;
+  }
+
+  .react-datepicker__day--today {
+    @apply bg-blue-50 text-blue-900 font-semibold;
+  }
+
+  .react-datepicker__navigation {
+    @apply text-white;
+  }
+
+  .react-datepicker__navigation:hover {
+    @apply text-blue-100;
+  }
+
+  .react-datepicker__year-dropdown,
+  .react-datepicker__month-dropdown {
+    @apply bg-white border border-gray-200 rounded-md shadow-lg;
+  }
+
+  .react-datepicker__year-option,
+  .react-datepicker__month-option {
+    @apply hover:bg-blue-50 transition-colors;
+  }
+
+  .react-datepicker__year-option--selected,
+  .react-datepicker__month-option--selected {
+    @apply bg-blue-600 text-white;
+  }
+}
+
+/* Simple scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .container-responsive {
+    @apply px-4;
+  }
+
+  .page-padding {
+    @apply py-6;
+  }
+
+  .form-grid {
+    @apply grid-cols-1;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-success,
+  .btn-danger,
+  .btn-outline {
+    @apply w-full;
+  }
+
+  .screen-reader-controls {
+    @apply bottom-2 right-2 p-2;
+  }
+
+  .select-field {
+    @apply text-base;
+  }
+  
+  .textarea-field {
+    @apply text-base min-h-[5rem];
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+  }
+}
+
+/* React Select styling */
+.react-select__control {
+  @apply border border-gray-300 rounded-md;
+}
+
+.react-select__control--is-focused {
+  @apply border-blue-500 ring-1 ring-blue-500;
+}
+
+.react-select__option {
+  @apply cursor-pointer;
+}
+
+.react-select__option--is-focused {
+  @apply bg-blue-50;
+}
+
+.react-select__option--is-selected {
+  @apply bg-blue-600 text-white;
+} 
