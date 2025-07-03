@@ -645,7 +645,7 @@ const PlayerRegistration = React.memo(() => {
                   </div>
                   <div className="mb-4">
                     <AccessibleInput
-                      label="Passport Number"
+                      label={translateFormText('Passport Number')}
                       id="passportNumber"
                       {...register('passportNumber')}
                       error={errors.passportNumber}
@@ -982,7 +982,7 @@ const PlayerRegistration = React.memo(() => {
                           value={field.value}
                           onChange={option => field.onChange(option.value)}
                           isClearable
-                          placeholder="Select or type classification (e.g., T44, S10, etc.)"
+                          placeholder={translateFormText('e.g., T44, S10, etc.')}
                           error={errors.disabilityClassification}
                           onFocus={() => speakField('Disability Classification')}
                           className="w-full"

@@ -12,7 +12,7 @@ export const useScreenReader = () => {
 };
 
 const ScreenReader = ({ children }) => {
-  const [isAudioEnabled, setIsAudioEnabled] = useState(true);
+  const [isAudioEnabled, setIsAudioEnabled] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [language, setLanguage] = useState('en');
   const [isControlsVisible, setIsControlsVisible] = useState(false);
@@ -169,7 +169,7 @@ const ScreenReader = ({ children }) => {
       profilePhoto: 'Profile Photo'
     },
     hi: {
-      firstName: 'Naam',
+      firstName: 'Pahela Naam',
       lastName: 'Upnaam',
       dateOfBirth: 'Janm Tithi',
       gender: 'Ling',
@@ -199,7 +199,7 @@ const ScreenReader = ({ children }) => {
       profilePhoto: 'Profile Photo'
     },
     gu: {
-      firstName: 'Naam',
+      firstName: 'Pahelu Naam',
       lastName: 'Avnaam',
       dateOfBirth: 'Janma Tarikh',
       gender: 'Ling',

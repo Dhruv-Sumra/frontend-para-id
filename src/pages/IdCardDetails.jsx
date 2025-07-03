@@ -3,49 +3,20 @@ import { useState } from 'react';
 export default function IdCardDetails() {
   const [playerId, setPlayerId] = useState('');
   const [email, setEmail] = useState('');
-  const [otp, setOtp] = useState('');
-  const [otpSent, setOtpSent] = useState(false);
-  const [otpLoading, setOtpLoading] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [otpMsg, setOtpMsg] = useState('');
   const [player, setPlayer] = useState(null);
-
-  const handleSendOtp = async (e) => {
-    e.preventDefault();
-    setOtpLoading(true);
-    setOtpMsg('');
-    setError('');
-    setOtp('');
-    setPlayer(null);
-    try {
-      const response = await fetch('/api/idcards/send-otp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      });
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error || 'Failed to send OTP');
-      setOtpSent(true);
-      setOtpMsg('OTP sent to your email. Please check your inbox.');
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setOtpLoading(false);
-    }
-  };
 
   const handleSearch = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError('');
     setPlayer(null);
-    setOtpMsg('');
     try {
       const response = await fetch('/api/idcards/search', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ playerId, email, otp }),
+        body: JSON.stringify({ playerId, email }),
       });
       let data;
       try {
@@ -97,53 +68,23 @@ export default function IdCardDetails() {
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                   Email
                 </label>
-                <div className="flex gap-2">
-                  <input
-                    type="email"
-                    id="email"
-                    value={email}
-                    onChange={(e) => { setEmail(e.target.value); setOtpSent(false); setOtp(''); setOtpMsg(''); }}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Enter your email"
-                    required
-                  />
-                  <button
-                    type="button"
-                    onClick={handleSendOtp}
-                    disabled={otpLoading || !email}
-                    className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {otpLoading ? 'Sending...' : 'Send OTP'}
-                  </button>
-                </div>
-                {otpMsg && <div className="text-green-600 text-sm mt-1">{otpMsg}</div>}
-              </div>
-            </div>
-            {otpSent && (
-              <div>
-                <label htmlFor="otp" className="block text-sm font-medium text-gray-700 mb-2">
-                  Enter OTP
-                </label>
                 <input
-                  type="text"
-                  id="otp"
-                  value={otp}
-                  onChange={(e) => setOtp(e.target.value)}
+                  type="email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Enter the OTP sent to your email"
+                  placeholder="Enter your email"
                   required
-                  maxLength={6}
-                  minLength={6}
-                  pattern="[0-9]{6}"
                 />
               </div>
-            )}
+            </div>
             <button
               type="submit"
-              disabled={loading || !otpSent}
+              disabled={loading}
               className="w-full bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
-              {loading ? 'Verifying...' : 'View Details'}
+              {loading ? 'Searching...' : 'View Details'}
             </button>
           </form>
         </div>
