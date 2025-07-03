@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: your-frontend
+    env: node
+    buildCommand: npm install && npm run build
+    staticPublishPath: "./build"
+    routes:
+      - path: /*
+        staticWebApp: true  # Serves index.html for all routes

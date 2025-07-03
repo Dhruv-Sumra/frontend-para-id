@@ -47,7 +47,13 @@ export default function IdCardDetails() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ playerId, email, otp }),
       });
-      const data = await response.json();
+      let data;
+      try {
+        const text = await response.text();
+        data = text ? JSON.parse(text) : {};
+      } catch (jsonErr) {
+        throw new Error('Invalid server response');
+      }
       if (!response.ok) throw new Error(data.error || 'Failed to find player');
       setPlayer(data.player);
     } catch (err) {
