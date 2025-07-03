@@ -137,6 +137,12 @@ export default function IdCardDetails() {
                       <span className="text-sm font-medium text-gray-500">Date of Birth:</span>
                       <p className="text-gray-800">{new Date(player.dateOfBirth).toLocaleDateString()}</p>
                     </div>
+                    {player.passportNumber && (
+                      <div>
+                        <span className="text-sm font-medium text-gray-500">Passport Number:</span>
+                        <p className="text-gray-800">{player.passportNumber}</p>
+                      </div>
+                    )}
                   </div>
                 </div>
 
