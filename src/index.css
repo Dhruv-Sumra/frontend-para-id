@@ -397,7 +397,8 @@
 /* Mobile responsive */
 @media (max-width: 768px) {
   .container-responsive {
-    @apply px-4;
+    @apply px-2;
+    max-width: 98vw;
   }
 
   .page-padding {
