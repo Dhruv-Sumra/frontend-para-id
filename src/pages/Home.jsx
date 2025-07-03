@@ -135,11 +135,6 @@ const Home = () => {
                 Register New Player
                 <ArrowRight size={20} />
               </Link>
-              <Link to="/id-card-details" className="btn-secondary text-lg px-8 py-4">
-                <Users size={24} />
-                ID Card Details
-                <ArrowRight size={20} />
-              </Link>
             </div>
           </div>
         </div>

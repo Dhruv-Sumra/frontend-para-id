@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Users, UserPlus, Home, Trophy, User, Heart, Menu, X } from 'lucide-react';
+import { UserPlus, Home, Trophy, User, Heart, Menu, X } from 'lucide-react';
 import ParaSportsIcons from './ParaSportsIcons';
 import logo1 from '../assets/logo1.png';  
 
@@ -25,7 +25,6 @@ const Navbar = () => {
   const navLinks = [
     { path: '/', label: 'Home', icon: Home },
     { path: '/register', label: 'Register Player', icon: UserPlus },
-    { path: '/id-card-details', label: 'ID Card Details', icon: Users },
   ];
 
   return (
