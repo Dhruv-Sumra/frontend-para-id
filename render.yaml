@@ -1,9 +1,12 @@
 services:
   - type: web
-    name: your-frontend
+    name: para-sports-frontend
     env: node
     buildCommand: npm install && npm run build
-    staticPublishPath: "./build"
+    staticPublishPath: "./dist"
+    envVars:
+      - key: VITE_API_URL
+        value: https://your-backend-service.onrender.com
     routes:
       - path: /*
         staticWebApp: true  # Serves index.html for all routes
